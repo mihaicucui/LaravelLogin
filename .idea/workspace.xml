@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fc85f03a-ce22-407a-be8f-d0e358a77ae6" name="Default Changelist" comment="" />
+    <list default="true" id="fc85f03a-ce22-407a-be8f-d0e358a77ae6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -149,6 +155,7 @@
       <option name="presentableId" value="Default" />
       <updated>1599732528867</updated>
       <workItem from="1599732529916" duration="7368000" />
+      <workItem from="1600067991868" duration="3945000" />
     </task>
     <servers />
   </component>
@@ -156,10 +163,11 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1599741583853">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2714" y="443" key="NewPhpFileDialog" timestamp="1600069228727">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599741583853" />
+    <state x="2714" y="443" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1600069228727" />
     <state x="2587" y="119" width="585" height="801" key="find.popup" timestamp="1599735897437">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

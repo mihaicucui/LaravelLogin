@@ -21,6 +21,10 @@ Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
-
-
 Route::get('/home2', 'App\Http\Controllers\HomeController@demo')->name('demo');
+
+Route::get('/clients', function (){
+    return view('clients');
+});
+
+
