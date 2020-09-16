@@ -10941,3 +10941,7 @@ a.text-dark:focus {
   }
 }
 
+.my-smaller-container {
+  margin: 15%;
+}
+

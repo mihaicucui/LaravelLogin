@@ -17,32 +17,28 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Latest compiled JavaScript -->
-    {{--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>--}}
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- DataTables -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
 </head>
 <body>
 <div class="d-flex toggled" id="wrapper">
 
+    <div id="app"></div>
 
         <div class="bg-dark border-right" id="sidebar-wrapper">
             <div class="sidebar-heading text-light">Menu</div>
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-light">View Clients</a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-light">Create Client</a>
+                <a href="{{route('clients')}}" class="list-group-item list-group-item-action bg-dark text-light">View Clients</a>
+                <a href="{{route('clients.create')}}" class="list-group-item list-group-item-action bg-dark text-light">Create Client</a>
                 <a href="#" class="list-group-item list-group-item-action bg-dark text-light">View Transactions</a>
                 <a href="#" class="list-group-item list-group-item-action bg-dark text-light">Create Transaction</a>
             </div>

@@ -22,7 +22,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::all();
-        return view('clients',['clients'=>$clients]);
+        return view('clients.clients', ['clients' => $clients]);
     }
 
     /**
@@ -30,26 +30,53 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $res = $request->session()->get('customMessage');
+
+
+
+        return view('clients.create', ['msg' => (isset($_SESSION['customErrorMessage'])) ? $_SESSION['customErrorMessage'] : false]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+
+        request()->validate([
+            'name'        => ['required', 'min:3'],
+            'description' => 'required'
+        ]);
+
+
+        $client = new Client();
+        $client->name = \request('name');
+        $client->description = \request('description');
+        $saveResult = $client->save();
+
+        if (!$saveResult) {
+            return redirect(route('clients.create'));
+        }else{
+//            return redirect(route('clients')->with('mess','xax'));
+            //plus o eventuala verificare de success in view
+            return \Redirect::route('clients')->with('mess','Client added successfully');
+        }
+
+
+
+
+        return redirect(route('clients'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Client  $client
+     * @param \App\Models\Client $client
      * @return \Illuminate\Http\Response
      */
     public function show(Client $client)
@@ -60,34 +87,53 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Client  $client
+     * @param \App\Models\Client $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit($id)
     {
-        //
+        $client = Client::where('id',$id)->firstOrFail();
+        return view('clients.edit',['client'=>$client]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Client  $client
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Client $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update($id)
     {
-        //
+        request()->validate([
+            'name'        => ['required', 'min:3'],
+            'description' => 'required'
+        ]);
+
+        $client = Client::findOrFail($id);
+        $client->name = \request('name');
+        $client->description = \request('description');
+        $client->save();
+        return \Redirect::route('clients')->with('mess','Client updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Client  $client
+     * @param \App\Models\Client $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy($id)
     {
-        //
+        $client = Client::find($id);
+//        $client->forceDelete();
+
+//        sleep(3);
+
+        if ($client && $client->forceDelete()) {
+            return response()->json(['status' => 'success']);
+        } else {
+            return response()->json(['status' => 'error']);
+        }
     }
 }
