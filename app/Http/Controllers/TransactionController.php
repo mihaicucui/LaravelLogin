@@ -14,7 +14,13 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        //public function index()
+        //    {
+        //        $clients = Client::all();
+        //        return view('clients.clients', ['clients' => $clients]);
+        //    }
+        $transactions = Transaction::all();
+        return view('transactions.transactions',['transactions'=>$transactions]);
     }
 
     /**

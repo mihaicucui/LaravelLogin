@@ -8,6 +8,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- DataTables -->
+{{--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">--}}
+
+{{--    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>--}}
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -22,11 +26,12 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <!-- DataTables -->
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+{{--    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>--}}
+
+
 
 </head>
 <body>
@@ -39,7 +44,7 @@
             <div class="list-group list-group-flush">
                 <a href="{{route('clients')}}" class="list-group-item list-group-item-action bg-dark text-light">View Clients</a>
                 <a href="{{route('clients.create')}}" class="list-group-item list-group-item-action bg-dark text-light">Create Client</a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-light">View Transactions</a>
+                <a href="{{route('transactions')}}" class="list-group-item list-group-item-action bg-dark text-light">View Transactions</a>
                 <a href="#" class="list-group-item list-group-item-action bg-dark text-light">Create Transaction</a>
             </div>
         </div>

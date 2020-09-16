@@ -1,5 +1,7 @@
-window.jQuery = require('jquery');
-window.$ = window.$ || jQuery;
+var $  = require( 'jquery' );
+var dt = require( 'datatables.net' );
+
+
 
 $(function () {
     $("#menu-toggle").click(function (e) {
@@ -39,4 +41,12 @@ $(function () {
             }
         });
     });
+
+    $(document).ready(function (){
+        $('#transactions-table').DataTable({
+            stateSave:true
+            }
+        );
+    })
+
 });

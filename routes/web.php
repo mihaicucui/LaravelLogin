@@ -32,7 +32,7 @@ Route::delete('/clients/{client}', '\App\Http\Controllers\ClientController@destr
 Route::get('clients/{client}/edit','\App\Http\Controllers\ClientController@edit');
 Route::put('clients/{client}','\App\Http\Controllers\ClientController@update');
 
-
+Route::get('/transactions','\App\Http\Controllers\TransactionController@index')->name('transactions');
 
 
 
