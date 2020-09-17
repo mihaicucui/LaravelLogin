@@ -34,5 +34,8 @@ Route::put('clients/{client}','\App\Http\Controllers\ClientController@update');
 
 Route::get('/transactions','\App\Http\Controllers\TransactionController@index')->name('transactions');
 
+Route::get('/transactions/get/','\App\Http\Controllers\TransactionController@getTransactions');
+
+
 
 

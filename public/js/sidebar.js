@@ -26363,7 +26363,21 @@ $(function () {
   });
   $(document).ready(function () {
     $('#transactions-table').DataTable({
-      stateSave: true
+      "processing": true,
+      "serverSide": true,
+      "ajax": "/transactions/get",
+      // "deferLoading":20000,
+      "columns": [{
+        "data": "id"
+      }, {
+        "data": "client_id"
+      }, {
+        "data": "amount"
+      }, {
+        "data": "currency"
+      }, {
+        "data": "status"
+      }]
     });
   });
 });

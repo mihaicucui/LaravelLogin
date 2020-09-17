@@ -14,15 +14,15 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($transactions as $transaction)
-                <tr>
-                    <td>{{$transaction->id}}</td>
-                    <td>{{$transaction->client_id}}</td>
-                    <td>{{$transaction->amount}}</td>
-                    <td>{{$transaction->currency}}</td>
-                    <td>{{$transaction->status}}</td>
-                </tr>
-            @endforeach
+{{--            @foreach($transactions as $transaction)--}}
+{{--                <tr>--}}
+{{--                    <td>{{$transaction->id}}</td>--}}
+{{--                    <td>{{$transaction->client_id}}</td>--}}
+{{--                    <td>{{$transaction->amount}}</td>--}}
+{{--                    <td>{{$transaction->currency}}</td>--}}
+{{--                    <td>{{$transaction->status}}</td>--}}
+{{--                </tr>--}}
+{{--            @endforeach--}}
             </tbody>
 
 
