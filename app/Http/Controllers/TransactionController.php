@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use http\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
+use DB;
 
 class TransactionController extends Controller
 {
@@ -29,35 +32,55 @@ class TransactionController extends Controller
 
     public function getTransactions(Request $request)
     {
+        DB::enableQueryLog();
+
         $currentItems = $request->get('start');
         $noItems = $request->get('length');
         $draw = $request->get('draw');
-
-        $transactionsCount = Transaction::all()->count();
-
-
-        $transactionsPaged = Transaction::skip($currentItems)->take($noItems)->get();
-
         $searchData = $request->get('search');
-        if (is_array($searchData) && isset($searchData['value'])) {
-            //search stuff
-            $searchData['value'];
+        $orderByArray = $request->get('order');
+        $dbColumns = Schema::getColumnListing('transactions');
 
-            $filtered=Transaction::select('*')
-                ->where('id',$searchData['value'])
-                ->orWhere('client_id',$searchData['value'])
-                ->orWhere('id',$searchData['value'])
-                ->orWhere('currency','like','%'.$searchData['value'].'%')
-                ->orWhere('status','like','%'.$searchData['value'].'%')
-                ->get();
-            $transactionsPaged = $filtered;
+        if (is_array($searchData) && isset($searchData['value'])) {
+            $transactionsQuery = Transaction::select('*')->where('id', $searchData['value'])
+                ->orWhere('id', $searchData['value'])
+                ->orWhere('currency', 'like', '%' . $searchData['value'] . '%')
+                ->orWhere('status', 'like', '%' . $searchData['value'] . '%');
+
+            if (is_numeric($searchData['value'])) {
+                $transactionsQuery = $transactionsQuery->orWhere('client_id', $searchData['value']);
+            }
+
+        } else {
+            $transactionsQuery = Transaction::select('*');
         }
+
+        foreach ($orderByArray as $orderItem) {
+            $column = $dbColumns[$orderItem['column']];
+            $transactionsQuery = $transactionsQuery->orderBy($column, $orderItem['dir']);
+        }
+
+        $filteredCount = $transactionsQuery->count();
+
+        $transactionsPaged = $transactionsQuery->skip($currentItems)->take($noItems)->get();
+
+        foreach ($transactionsPaged as $transaction) {
+            if (!$transaction->client) {
+                $transaction->client_name = '-';
+            } else {
+                $transaction->client_name = $transaction->client->name;
+            }
+        }
+
+
+
+
 
         $response = [
             'data'            => $transactionsPaged,
             'draw'            => $draw,
-            'recordsTotal'    => $transactionsCount,
-            'recordsFiltered' => $transactionsCount
+            'recordsTotal'    => Transaction::all()->count(),
+            'recordsFiltered' => $filteredCount
         ];
 
         return response()->json($response);

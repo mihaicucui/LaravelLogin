@@ -53,7 +53,8 @@ $(function () {
                 { "data": "client_id" },
                 { "data": "amount" },
                 { "data": "currency" },
-                { "data": "status" }
+                { "data": "status" },
+                { "data": "client_name" }
 
             ]
             }

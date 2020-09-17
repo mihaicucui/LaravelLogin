@@ -26377,6 +26377,8 @@ $(function () {
         "data": "currency"
       }, {
         "data": "status"
+      }, {
+        "data": "client_name"
       }]
     });
   });

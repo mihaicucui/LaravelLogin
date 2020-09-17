@@ -11,6 +11,7 @@
                 <th>amount</th>
                 <th>currency</th>
                 <th>status</th>
+                <th>client_name</th>
             </tr>
             </thead>
             <tbody>
@@ -30,4 +31,8 @@
 
 
     </div>
+
 @endsection
+
+
+
