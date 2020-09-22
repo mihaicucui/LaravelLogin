@@ -36,6 +36,10 @@ Route::get('/transactions','\App\Http\Controllers\TransactionController@index')-
 
 Route::get('/transactions/get/','\App\Http\Controllers\TransactionController@getTransactions');
 
+Route::get('transactions/get/divided','\App\Http\Controllers\TransactionController@getDividedByStatus');
+
+Route::get('transactions/get/months', '\App\Http\Controllers\TransactionController@getDividedByMonth');
+
 
 
 

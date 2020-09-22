@@ -15,6 +15,13 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
         //public function index()
@@ -41,6 +48,7 @@ class TransactionController extends Controller
         $orderByArray = $request->get('order');
         $dbColumns = Schema::getColumnListing('transactions');
 
+
         if (is_array($searchData) && isset($searchData['value'])) {
             $transactionsQuery = Transaction::select('*')->where('id', $searchData['value'])
                 ->orWhere('id', $searchData['value'])
@@ -54,6 +62,7 @@ class TransactionController extends Controller
         } else {
             $transactionsQuery = Transaction::select('*');
         }
+
 
         foreach ($orderByArray as $orderItem) {
             $column = $dbColumns[$orderItem['column']];
@@ -84,6 +93,36 @@ class TransactionController extends Controller
         ];
 
         return response()->json($response);
+    }
+
+    public function getDividedByStatus(){
+        $successNo = Transaction::where('status','SUCCESS')->count();
+        $pendingNo = Transaction::where('status','PENDING')->count();
+        $failedNo = Transaction::where('status','FAILED')->count();
+
+
+        $response = [
+            'success'=>$successNo,
+            'pending'=>$pendingNo,
+            'failed'=>$failedNo
+        ];
+        return response()->json($response);
+    }
+
+    public function getDividedByMonth(){
+        $monthsValue=[];
+
+        for($i=1;$i<=12;$i++){
+            $successNo = Transaction::whereMonth('created_at',strval($i))->where('status','SUCCESS')->count();
+            $pendingNo = Transaction::whereMonth('created_at',strval($i))->where('status','PENDING')->count();
+            $failedNo = Transaction::whereMonth('created_at',strval($i))->where('status','FAILED')->count();
+            $monthsValue[$i] = [
+                'success'=>$successNo,
+                'pending'=>$pendingNo,
+                'failed'=>$failedNo
+            ];
+        }
+        return response()->json($monthsValue);
     }
 
     /**
