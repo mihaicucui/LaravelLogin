@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div id="table-div" class="container table-wrapper-scroll-y">
 
         <table class="table">
             <thead class="thead-dark">

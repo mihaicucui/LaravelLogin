@@ -28,12 +28,9 @@
 
 
         </table>
-{{--        <div class="container chart-container" style="position: relative; height: 40vh; width:80vh">--}}
-{{--            <canvas id="myChart" width="400" height="400" aria-label="Hello ARIA World" role="img">--}}
-{{--            </canvas>--}}
-{{--        </div>--}}
 
-        <div id="div1">
+
+        <div id="div1" style="height:600px; width: 800px;">
             <canvas id="myChart2" width="400" height="400" aria-label="Hello ARIA World" role="img">
             </canvas>
         </div>

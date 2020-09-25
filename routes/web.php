@@ -40,6 +40,10 @@ Route::get('transactions/get/divided','\App\Http\Controllers\TransactionControll
 
 Route::get('transactions/get/months', '\App\Http\Controllers\TransactionController@getDividedByMonth');
 
+Route::get('/reports/monthly','\App\Http\Controllers\ReportController@getMonthlyReport')->name('reports.monthly');
+
+Route::post('reports/monthly', '\App\Http\Controllers\TransactionController@filterForGraph');
+
 
 
 

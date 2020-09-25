@@ -47,6 +47,7 @@
                 <a href="{{route('clients')}}" class="list-group-item list-group-item-action bg-dark text-light">View Clients</a>
                 <a href="{{route('clients.create')}}" class="list-group-item list-group-item-action bg-dark text-light">Create Client</a>
                 <a href="{{route('transactions')}}" class="list-group-item list-group-item-action bg-dark text-light">View Transactions</a>
+                <a href="{{route('reports.monthly')}}" class="list-group-item list-group-item-action bg-dark text-light">View Reports</a>
                 <a href="#" class="list-group-item list-group-item-action bg-dark text-light">Create Transaction</a>
             </div>
         </div>
