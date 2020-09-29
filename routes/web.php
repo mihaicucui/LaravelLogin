@@ -13,11 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/api-login','\App\Http\Controllers\ApiController@login');
+Route::post('/api-logout','\App\Http\Controllers\ApiController@logout');
+Route::get('/clients-table','\App\Http\Controllers\ApiController@getClients');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
@@ -43,7 +48,5 @@ Route::get('transactions/get/months', '\App\Http\Controllers\TransactionControll
 Route::get('/reports/monthly','\App\Http\Controllers\ReportController@getMonthlyReport')->name('reports.monthly');
 
 Route::post('reports/monthly', '\App\Http\Controllers\TransactionController@filterForGraph');
-
-
 
 
